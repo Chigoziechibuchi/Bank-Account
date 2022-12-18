@@ -1,0 +1,75 @@
+using System;
+using System.Collections.Generic;
+
+namespace BankAccount
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Set up the initial balance
+            double balance = 0;
+
+            // Set up a list to store the transaction history
+            List<string> transactionHistory = new List<string>();
+
+            // Run the program loop
+            while (true)
+            {
+                // Display the main menu
+                Console.WriteLine("Welcome to the Bank Account Manager");
+                Console.WriteLine("1. View current balance");
+                Console.WriteLine("2. Make a deposit");
+                Console.WriteLine("3. Make a withdrawal");
+                Console.WriteLine("4. View transaction history");
+                Console.WriteLine("5. Exit");
+
+                // Get the user's choice
+                Console.WriteLine("Enter your choice: ");
+                int choice = int.Parse(Console.ReadLine());
+
+                // Act on the user's choice
+                if (choice == 1)
+                {
+                    // View current balance
+                    Console.WriteLine("Your current balance is $" + balance);
+                }
+                else if (choice == 2)
+                {
+                    // Make a deposit
+                    Console.WriteLine("Enter the amount to deposit: ");
+                    double amount = double.Parse(Console.ReadLine());
+                    balance += amount;
+                    transactionHistory.Add("Deposit: $" + amount);
+                }
+                else if (choice == 3)
+                {
+                    // Make a withdrawal
+                    Console.WriteLine("Enter the amount to withdraw: ");
+                    double amount = double.Parse(Console.ReadLine());
+                    balance -= amount;
+                    transactionHistory.Add("Withdrawal: $" + amount);
+                }
+                else if (choice == 4)
+                {
+                    // View transaction history
+                    Console.WriteLine("Transaction history:");
+                    foreach (string transaction in transactionHistory)
+                    {
+                        Console.WriteLine(transaction);
+                    }
+                }
+                else if (choice == 5)
+                {
+                    // Exit the program
+                    break;
+                }
+                else
+                {
+                    // Invalid choice
+                    Console.WriteLine("Invalid choice. Please try again.");
+                }
+            }
+        }
+    }
+}
